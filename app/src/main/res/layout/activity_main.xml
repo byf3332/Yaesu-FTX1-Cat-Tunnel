@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- ===== Card 1: Settings ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:drawable/dialog_holo_light_frame">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connection"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Serial port"
+            android:paddingTop="4dp"/>
+
+        <Spinner
+            android:id="@+id/spPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TCP port"
+            android:paddingTop="12dp"/>
+
+        <EditText
+            android:id="@+id/etTcpPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="e.g. 4532"
+            android:maxLines="1"/>
+        <TextView
+            android:id="@+id/tvListen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Listen: (no LAN IP)"
+            android:textSize="12sp"
+            android:alpha="0.8"
+            android:paddingTop="6dp"
+            android:textIsSelectable="true"
+            android:typeface="monospace"/>
+
+        <!-- Buttons row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnProbe"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="SCAN"/>
+
+            <Button
+                android:id="@+id/btnTestId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TEST"
+                android:minHeight="48dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:layout_marginStart="8dp"/>
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="START"
+                android:minHeight="48dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:layout_marginStart="8dp"/>
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="STOP"
+                android:minHeight="48dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tip: Usually you don't need SCAN. It's for re-scan after replug."
+            android:textSize="12sp"
+            android:alpha="0.7"
+            android:paddingTop="10dp"/>
+    </LinearLayout>
+
+    <!-- spacing -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp"/>
+
+    <!-- ===== Card 2: Log (only this area scrolls) ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:drawable/dialog_holo_light_frame">
+
+        <TextView
+            android:id="@+id/tvLogTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <!-- Scroll area: horizontal + vertical -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <ScrollView
+                android:id="@+id/logScroll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <TextView
+                    android:id="@+id/tvLog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:typeface="monospace"
+                    android:textIsSelectable="true"
+                    android:text=""/>
+            </ScrollView>
+        </HorizontalScrollView>
+
+        <Button
+            android:id="@+id/btnClearLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CLEAR LOG"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>
