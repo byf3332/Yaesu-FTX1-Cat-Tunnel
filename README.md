@@ -66,6 +66,7 @@ In **dtrac**:
    - Default: `4532`
 5. Click Connect
 
+## 中文
 一个用于 **Yaesu FTX-1** 的 Android CAT → TCP 转发工具，主要用于配合 **dtrac** 通过网络方式控制电台。
 
 > ⚠️ 说明：  
