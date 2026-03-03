@@ -1,5 +1,71 @@
 # CatTunnel for Yaesu FTX-1
 
+An Android CAT → TCP forwarding tool for **Yaesu FTX-1**, primarily designed to work with **dtrac** to control the radio over a network connection.
+
+> ⚠️ Note:  
+> This repository contains a significant amount of code generated and organized with AI (ChatGPT) assistance. It is an experimental project.
+
+---
+
+## Current Support Status
+
+- ✅ **Radio**: Yaesu **FTX-1**
+- ✅ **Software**: **dtrac**
+- ✅ **Connection Method**: USB → Android → TCP (LAN)
+- ❌ Other Yaesu / non-Yaesu radios **not tested**
+- ❌ Other CAT clients **not tested**
+
+---
+
+## How It Works (Brief)
+
+```
+FTX-1 (USB CAT)
+│
+Android Phone (CatTunnel)
+│
+dtrac (same LAN)
+```
+
+
+On Android, CatTunnel:
+
+- Accesses the radio's CAT serial port via USB
+- Starts a local TCP server
+- Forwards raw byte streams bidirectionally between **TCP ⇄ CAT**
+
+---
+
+## Usage Instructions
+
+### 1. CatTunnel (This App)
+
+1. **Connect the FTX-1 to your Android phone using a USB data cable**
+2. Open **CatTunnel**
+3. Tap **TEST**
+   - If you see `ID;` returning in the log (e.g., `ID0840;`), CAT is working properly
+4. Tap **START**
+   - CatTunnel will then run in the background (foreground service + persistent notification)
+5. If the app does not prompt or auto-detect the USB device after plugging in, check USB permissions and try tapping **SCAN** to search manually
+
+> ⚠️ Notes  
+> - If you tap **START** without connecting the radio, it will indicate that it has not started  
+> - After unplugging the USB cable, you must manually tap **STOP**, or remove the app from the recent apps list before reconnecting
+
+---
+
+### 2. dtrac Configuration
+
+In **dtrac**:
+
+1. **Radio Type**: Select **YAESU FTX-1**
+2. **Radio Interface**: Select **Network**
+3. **IP Address**: Enter the LAN IP of the phone running CatTunnel (if using dtrac on the same phone, you can enter `127.0.0.1`)
+   - Example: `192.168.1.123`
+4. **Port**: Enter the port configured in CatTunnel  
+   - Default: `4532`
+5. Click Connect
+
 一个用于 **Yaesu FTX-1** 的 Android CAT → TCP 转发工具，主要用于配合 **dtrac** 通过网络方式控制电台。
 
 > ⚠️ 说明：  
